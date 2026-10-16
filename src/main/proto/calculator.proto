@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_package = "it.univ.grpclab";
+option java_outer_classname = "CalculatorProto";
+option java_multiple_files = true;
+
+package calculator;
+
+service Calculator {
+  rpc Add      (OperationRequest) returns (OperationResponse);
+  rpc Subtract (OperationRequest) returns (OperationResponse);
+  rpc Multiply (OperationRequest) returns (OperationResponse);
+  rpc Divide   (OperationRequest) returns (OperationResponse);
+}
+
+message OperationRequest {
+  double operand_a = 1;
+  double operand_b = 2;
+}
+
+message OperationResponse {
+  double result = 1;
+  string description = 2;
+}
